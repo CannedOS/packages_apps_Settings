@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!--CannedOS-->
+    <string name="canned_title" translatable="false">CannedOS</string>
+
+    <!-- About phone screen, Canned version -->
+    <string name="canned_version">CannedOS version</string>
+    <string name="canned_version_default">Unknown</string>
+    <string name="keywords_canned_version">canned version</string>
+
+    <!-- About phone screen, build date -->
+    <string name="build_date">Build date</string>
+    <string name="build_date_default">2015-01-01-0000</string>
+    <string name="keywords_build_date">build date, build info</string>
+</resources>

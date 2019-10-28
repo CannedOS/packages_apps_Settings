@@ -21,6 +21,27 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
+<PreferenceScreen
+    android:layout="@layout/canned_logo"
+    android:key="canned_logo"
+    android:selectable="false" />
+
+    <!-- Canned version -->
+    <Preference
+        android:key="canned_version"
+        android:title="@string/canned_version"
+        android:summary="@string/summary_placeholder"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.CannedVersionPreferenceController"/>
+
+    <!-- Build date -->
+    <Preference
+        android:key="build_date"
+        android:title="@string/build_date"
+        android:summary="@string/build_date_default"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.BuildDatePreferenceController"/>
+
     <!-- Android version -->
     <Preference
         android:key="os_firmware_version"
@@ -29,20 +50,6 @@
         settings:enableCopying="true"
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
-
-	<!-- Legion Logo -->
-      <LinearLayout
-    	  android:gravity="center"
-	      android:layout_width="match_parent"
-	      android:layout_height="wrap_content"
-        android:selectable="false">
-
-    <ImageView
-	       android:layout_width="match_parent"
- 	       android:layout_height="match_parent"
-	       android:src="@drawable/ic_legion_logo"
-	       android:adjustViewBounds="true"
-	       android:scaleType="centerInside" />
 
 </LinearLayout>
 
