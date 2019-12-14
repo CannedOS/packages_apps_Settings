@@ -253,6 +253,8 @@ public class BatteryInfo {
                 BatteryManager.EXTRA_VOOC_CHARGER, false);
         final boolean dashChargeStatus = batteryBroadcast.getBooleanExtra(
                 BatteryManager.EXTRA_DASH_CHARGER, false);
+        final boolean warpChargeStatus = batteryBroadcast.getBooleanExtra(
+                BatteryManager.EXTRA_WARP_CHARGER, false);
         info.discharging = false;
         info.suggestionLabel = null;
         if (chargeTime > 0 && status != BatteryManager.BATTERY_STATUS_FULL) {
@@ -260,17 +262,22 @@ public class BatteryInfo {
             CharSequence timeString = StringUtil.formatElapsedTime(context,
                     PowerUtil.convertUsToMs(info.remainingTimeUs), false /* withSeconds */);
             int resId = R.string.power_charging_duration;
+
 if (voocChargeStatus) {
                 info.remainingLabel = context.getString(
                         R.string.power_remaining_vooc_charging_duration_only, timeString);
             } else if (dashChargeStatus) {
                 info.remainingLabel = context.getString(
+                        R.string.power_remaining_dash_charging_duration_only, timeString);
+            } else if (warpChargeStatus) {
+                info.remainingLabel = context.getString(
                         R.string.power_remaining_warp_charging_duration_only, timeString);
             } else {
                 info.remainingLabel = context.getString(
                         R.string.power_remaining_charging_duration_only, timeString);
-            }            info.chargeLabel = context.getString(resId, info.batteryPercentString, timeString);
-        } else {
+            }
+            info.chargeLabel = context.getString(resId, info.batteryPercentString, timeString);
+	 } else {
             final String chargeStatusLabel = Utils.getBatteryStatus(context, batteryBroadcast);
             info.remainingLabel = null;
             info.chargeLabel = info.batteryLevel == 100 ? info.batteryPercentString :
