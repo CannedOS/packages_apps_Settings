@@ -29,7 +29,7 @@ import com.android.settings.core.BasePreferenceController;
 public class CannedVersionPreferenceController extends BasePreferenceController {
 
     @VisibleForTesting
-    static final String CANNED_VERSION_PROPERTY = "ro.canned.version";
+    static final String CANNED_VERSION_PROPERTY = "ro.modversion";
 
     public CannedVersionPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
