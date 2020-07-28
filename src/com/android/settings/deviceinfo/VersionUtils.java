@@ -5,7 +5,7 @@ import android.os.SystemProperties;
 
 public class VersionUtils {
     public static String getCannedVersion(){
-        String buildType = SystemProperties.get("ro.canned.build.version","");
+        String buildType = SystemProperties.get("ro.canned.version","");
 	return buildType.equals("") ? "" : buildType;
     }
 }
