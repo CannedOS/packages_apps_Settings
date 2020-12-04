@@ -249,6 +249,8 @@ public class BatteryInfo {
         final long chargeTime = stats.computeChargeTimeRemaining(elapsedRealtimeUs);
         final int status = batteryBroadcast.getIntExtra(BatteryManager.EXTRA_STATUS,
                 BatteryManager.BATTERY_STATUS_UNKNOWN);
+        final boolean voocChargeStatus = batteryBroadcast.getBooleanExtra(
+                BatteryManager.EXTRA_VOOC_CHARGER, false);
         info.discharging = false;
         info.suggestionLabel = null;
         if (chargeTime > 0 && status != BatteryManager.BATTERY_STATUS_FULL) {
@@ -258,6 +260,13 @@ public class BatteryInfo {
             int resId = R.string.power_charging_duration;
             info.remainingLabel = context.getString(
                     R.string.power_remaining_charging_duration_only, timeString);
+if (voocChargeStatus) {
+                info.remainingLabel = context.getString(
+                        R.string.power_remaining_vooc_charging_duration_only, timeString);
+            } else {
+                info.remainingLabel = context.getString(
+                        R.string.power_remaining_charging_duration_only, timeString);
+            }
             info.chargeLabel = context.getString(resId, info.batteryPercentString, timeString);
         } else {
             final String chargeStatusLabel = Utils.getBatteryStatus(context, batteryBroadcast);
